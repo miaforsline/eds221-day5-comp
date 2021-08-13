@@ -43,19 +43,23 @@ Add line-by-line comments wheres prompted in the code below, explaining what eac
 # ------ WHAT HAPPENS HERE? ------ #
 # ------ comment line-by-line ---- #
 
-# The line below...
+# The line below creates a vector of time. 
 time_yr <- seq(from = 0, to = 8, by = 1)
 
-# The line below...
+# The line below creates an empty matrix to store the output of the for loop (4 columns x 9 rows)
 proj_year <- matrix(ncol = length(fish_year0), nrow = length(time_yr))
 
-# The line below...
+# The line below populates the 1st row of the matrix with the initial conditions
+#[row, column] = 2D structure index 
+#[1, ] = row 1 across all columns 
 proj_year[1, ] <- fish_year0
 
-# The for loop below...
-for (i in 2:length(time_yr)) {
+# The for loop below iterates the dot product over the time vector. 
+for (i in 2:length(time_yr)) { #skip year 0 in the time vector in order to calculate year 1 (which is row 1)
   proj_year[i,] <- fish_leslie %*% proj_year[i-1,]
 }
+#year 1 <- survival rates *dot product* year 0 (aka initial conditions)
+#populate the empty matrix (proj_year) by rows 
 
 
 # The rest is wrangling & visualization (run to check it out):
