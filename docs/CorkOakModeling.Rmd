@@ -1,0 +1,18 @@
+---
+title: "CorkOakModeling"
+author: "Mia Forsline"
+date: "8/13/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(here)
+
+source(here::here("src", "cork_oak_growth.R")) #source the fcn in the R script in order to use the fcn in this RMD (see Global Environment)
+```
+
+```{r}
+height_t2(height_t1 = 10, t1 = 10, t2 = 20)
+```
+
